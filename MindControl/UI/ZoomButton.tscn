@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Fonts/TutorialText.tres" type="DynamicFont" id=1]
+
+[node name="ZoomButton" type="CanvasLayer"]
+
+[node name="Zoom" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 246.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+text = "press 'space' to zoom"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

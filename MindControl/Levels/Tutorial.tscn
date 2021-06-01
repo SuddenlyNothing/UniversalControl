@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/TutorialText.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/FollowInfected.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Environment/NavigateTiles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Environment/TileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Fonts/TutorialText.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Characters/Citizen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Environment/Background.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Tutorial.gd" type="Script" id=8]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource( 8 )
+next_scene = "res://Levels/Tutorial2.tscn"
+
+[node name="Background" parent="." instance=ExtResource( 7 )]
+
+[node name="NavigateTiles" parent="." instance=ExtResource( 3 )]
+
+[node name="TileMap" parent="NavigateTiles" instance=ExtResource( 4 )]
+tile_data = PoolIntArray( -786433, 0, 0, -851968, 0, 0, -720897, 0, 0, -786432, 0, 0, -655361, 0, 0, -720896, 0, 0, -589825, 0, 0, -655360, 0, 0, -524289, 0, 0, -589824, 0, 0, -458753, 0, 0, -524288, 0, 0, -393217, 0, 0, -458752, 0, 0, -327681, 0, 0, -393216, 0, 0, -262145, 0, 0, -327680, 0, 0, -196609, 0, 0, -262144, 0, 0, -131073, 0, 0, -196608, 0, 0, -65537, 0, 0, -131072, 0, 0, -1, 0, 0, -65536, 0, 0, 65535, 0, 0, 0, 0, 0, 131071, 0, 0, 65536, 0, 0 )
+
+[node name="FollowInfected" parent="." instance=ExtResource( 2 )]
+
+[node name="TutorialText" parent="." instance=ExtResource( 1 )]
+margin_left = -32.0
+margin_top = 48.0
+margin_right = 155.0
+margin_bottom = 74.0
+rect_rotation = -26.6
+custom_fonts/font = ExtResource( 5 )
+text = "wasd to move"
+
+[node name="TutorialText2" parent="." instance=ExtResource( 1 )]
+margin_left = -112.0
+margin_top = 8.0
+margin_right = 192.0
+margin_bottom = 24.0
+rect_rotation = -26.6
+custom_fonts/font = ExtResource( 5 )
+text = "touch the others to infect"
+align = 1
+autowrap = true
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Citizen" parent="YSort" instance=ExtResource( 6 )]
+start_state = "player_control"
+
+[node name="Citizen2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 192, -96 )
+
+[node name="Citizen3" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 384, -192 )

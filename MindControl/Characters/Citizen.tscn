@@ -1,0 +1,248 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Assets/Citizens/InfectedSpritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Citizen.gd" type="Script" id=2]
+[ext_resource path="res://Characters/MovementStates.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Citizens/CitizenSpritesheet.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sounds/SFX/ControlSFX.wav" type="AudioStream" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 12, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 60, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 24, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 12, 16 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "DownRight",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "UpRight",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "Up",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "Down",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 12, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 60, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 24, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 12, 16 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "DownRight",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "UpRight",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "Up",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "Down",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=13]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite2:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=22]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 5.0
+
+[sub_resource type="Gradient" id=16]
+offsets = PoolRealArray( 0.00362319, 1 )
+colors = PoolColorArray( 0.255814, 0.662285, 1, 1, 0, 0.431489, 1, 0.592157 )
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 30.0
+gravity = Vector3( 0, 200, 0 )
+initial_velocity = -70.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 17 )
+
+[sub_resource type="Gradient" id=19]
+colors = PoolColorArray( 1, 0, 0.957722, 1, 0.337255, 0, 1, 0 )
+
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
+
+[sub_resource type="ParticlesMaterial" id=21]
+emission_shape = 1
+emission_sphere_radius = 10.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -100.0
+color_ramp = SubResource( 20 )
+
+[node name="Citizen" type="KinematicBody2D"]
+pause_mode = 1
+script = ExtResource( 2 )
+
+[node name="MovementStates" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -8 )
+frames = SubResource( 6 )
+animation = "Down"
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0, -8 )
+frames = SubResource( 12 )
+animation = "Down"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/Idle = SubResource( 13 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, 0, -6, -3, 0, -6, 6, -3 )
+
+[node name="DetectInfected" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInfected"]
+position = Vector2( 0, -4 )
+shape = SubResource( 22 )
+
+[node name="Tween" type="Tween" parent="."]
+pause_mode = 2
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( 0, -3 )
+shape = SubResource( 15 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Node"]
+visible = false
+
+[node name="ScaredParticles" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 0, -13 )
+emitting = false
+lifetime = 0.8
+explosiveness = 0.5
+process_material = SubResource( 18 )
+
+[node name="InfectedParticles" type="Particles2D" parent="."]
+position = Vector2( 0, -8 )
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.7
+randomness = 1.0
+process_material = SubResource( 21 )
+
+[node name="Infect" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+
+[connection signal="area_entered" from="Hurtbox" to="MovementStates" method="_on_Hurtbox_area_entered"]

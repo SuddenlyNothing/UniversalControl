@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Environment/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Environment/TileMap.gd" type="Script" id=4]
+
+[node name="TileMap" type="TileMap"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 32 )
+collision_layer = 2
+collision_mask = 0
+format = 1
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

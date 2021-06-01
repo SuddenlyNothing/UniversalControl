@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Fonts/Sharpie.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/TutorialText.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/FollowInfected.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Citizen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Environment/NavigateTiles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Environment/TileMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Environment/Background.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Tutorial2.gd" type="Script" id=8]
+[ext_resource path="res://Environment/Turret.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 2
+font_data = ExtResource( 1 )
+
+[node name="Tutorial2" type="Node2D"]
+script = ExtResource( 8 )
+next_scene = "res://Levels/Tutorial3.tscn"
+
+[node name="Background" parent="." instance=ExtResource( 7 )]
+
+[node name="NavigateTiles" parent="." instance=ExtResource( 5 )]
+
+[node name="TileMap" parent="NavigateTiles" instance=ExtResource( 6 )]
+tile_data = PoolIntArray( -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -65539, 1, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 1, 0, -3, 1, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 1, 0, 65533, 1, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 131069, 1, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 1, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0 )
+
+[node name="FollowInfected" parent="." instance=ExtResource( 3 )]
+
+[node name="TutorialText" parent="." instance=ExtResource( 2 )]
+margin_left = -120.0
+margin_top = -56.0
+margin_right = 120.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 1 )
+text = "Things Get dangerous when a couple get infected"
+align = 1
+autowrap = true
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Citizen" parent="YSort" instance=ExtResource( 4 )]
+start_state = "player_control"
+
+[node name="Citizen2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -104, 0 )
+
+[node name="Citizen3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 0, 56 )
+
+[node name="Citizen4" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 112, 0 )
+
+[node name="Turret" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -192, -8 )
+
+[node name="Turret2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 192, 8 )
+
+[node name="Turret3" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 192, -8 )
+
+[node name="Turret4" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -192, 8 )
